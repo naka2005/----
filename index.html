@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f6b73c">
+  <title>かんたん会計</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="brand-mark" aria-hidden="true">¥</div>
+      <div>
+        <p class="eyebrow">FESTIVAL CASH DESK</p>
+        <h1>かんたん会計</h1>
+      </div>
+      <div class="header-date" id="headerDate"></div>
+    </header>
+
+    <main class="main-content">
+      <section class="intro-row">
+        <div>
+          <p class="kicker">売れた個数を入れるだけ</p>
+          <h2>今日の会計を入力</h2>
+        </div>
+        <button class="outline-button" id="resetButton" type="button">入力をリセット</button>
+      </section>
+
+      <section class="workspace-grid">
+        <div class="entry-panel panel">
+          <div class="panel-heading">
+            <div>
+              <span class="step-number">01</span>
+              <h3>金額ごとの個数</h3>
+            </div>
+            <label class="date-field">
+              <span>日付</span>
+              <input id="entryDate" type="date">
+            </label>
+          </div>
+
+          <p class="helper-text">売れた金額の行だけ、個数を入力してください。</p>
+          <div class="amount-list" id="amountList"></div>
+
+          <div class="custom-amount-row">
+            <label for="customAmount">金額を追加</label>
+            <div class="custom-amount-controls">
+              <input id="customAmount" type="number" min="1" step="10" inputmode="numeric" placeholder="例：150">
+              <button id="addAmountButton" class="small-button" type="button">追加</button>
+            </div>
+          </div>
+
+          <div class="total-block">
+            <span>今回の合計</span>
+            <strong id="currentTotal">¥0</strong>
+          </div>
+          <button id="saveButton" class="primary-button" type="button">この会計を保存する</button>
+          <p class="save-message" id="saveMessage" role="status" aria-live="polite"></p>
+          <p class="cloud-status" id="cloudStatus"></p>
+        </div>
+
+        <aside class="summary-column">
+          <div class="today-card panel">
+            <div class="card-label"><span class="live-dot"></span>この日の合計</div>
+            <strong id="dayTotal">¥0</strong>
+            <p id="entryCount">0件の会計</p>
+          </div>
+
+          <div class="guide-card">
+            <span class="guide-icon">✓</span>
+            <div>
+              <h3>入力の流れ</h3>
+              <p>金額を見つける<br>→ 個数を入れる<br>→ 合計を保存</p>
+            </div>
+          </div>
+        </aside>
+      </section>
+
+      <section class="history-section">
+        <div class="section-heading">
+          <div>
+            <p class="kicker">保存した会計</p>
+            <h2>入力履歴</h2>
+          </div>
+          <button id="downloadButton" class="outline-button" type="button">一覧をダウンロード</button>
+        </div>
+        <div class="history-list panel" id="historyList"></div>
+      </section>
+    </main>
+
+    <footer>入力内容はこの端末のブラウザに保存されます</footer>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="cloud-config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
