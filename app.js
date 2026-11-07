@@ -22,8 +22,9 @@ const historyList = document.querySelector('#historyList');
 const saveMessage = document.querySelector('#saveMessage');
 const cloudStatus = document.querySelector('#cloudStatus');
 
-const cloud = window.CLOUD_CONFIG?.url && window.CLOUD_CONFIG?.anonKey && window.supabase
-  ? window.supabase.createClient(window.CLOUD_CONFIG.url, window.CLOUD_CONFIG.anonKey)
+const cloudUrl = window.CLOUD_CONFIG?.url?.replace(/\/rest\/v1\/?$/, '');
+const cloud = cloudUrl && window.CLOUD_CONFIG?.anonKey && window.supabase
+  ? window.supabase.createClient(cloudUrl, window.CLOUD_CONFIG.anonKey)
   : null;
 
 let amounts = loadAmounts();
