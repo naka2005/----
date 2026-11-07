@@ -27,6 +27,12 @@
         <button class="outline-button" id="resetButton" type="button">入力をリセット</button>
       </section>
 
+      <nav class="view-tabs" aria-label="画面切り替え">
+        <button class="view-tab is-active" type="button" data-view="entryView">会計を入力</button>
+        <button class="view-tab" type="button" data-view="historyView">会計を見る</button>
+      </nav>
+
+      <div id="entryView" class="view-panel is-visible">
       <section class="workspace-grid">
         <div class="entry-panel panel">
           <div class="panel-heading">
@@ -76,7 +82,9 @@
           </div>
         </aside>
       </section>
+      </div>
 
+      <div id="historyView" class="view-panel">
       <section class="history-section">
         <div class="section-heading">
           <div>
@@ -87,6 +95,7 @@
         </div>
         <div class="history-list panel" id="historyList"></div>
       </section>
+      </div>
     </main>
 
   </div>

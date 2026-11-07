@@ -66,6 +66,12 @@ h2 { margin: 7px 0 0; font-size: clamp(26px, 4vw, 36px); letter-spacing: -.04em;
   transition: .2s ease;
 }
 .outline-button:hover, .small-button:hover { border-color: var(--ink); background: white; transform: translateY(-1px); }
+.view-tabs { display: flex; gap: 5px; margin-top: 34px; padding: 5px; border-bottom: 1px solid var(--line); }
+.view-tab { padding: 12px 18px; border: 0; border-bottom: 3px solid transparent; background: transparent; color: var(--muted); font-size: 13px; font-weight: 700; }
+.view-tab:hover { color: var(--ink); }
+.view-tab.is-active { border-bottom-color: var(--coral); color: var(--ink); }
+.view-panel { display: none; }
+.view-panel.is-visible { display: block; }
 .workspace-grid { display: grid; grid-template-columns: minmax(0, 1fr) 280px; gap: 24px; margin-top: 32px; }
 .panel { border: 1px solid var(--line); border-radius: 14px; background: rgba(255, 253, 248, .9); box-shadow: var(--shadow); }
 .entry-panel { padding: clamp(22px, 4vw, 38px); }

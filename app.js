@@ -194,6 +194,13 @@ document.querySelector('#addAmountButton').addEventListener('click', () => {
 document.querySelector('#saveButton').addEventListener('click', saveEntry);
 document.querySelector('#resetButton').addEventListener('click', clearInputs);
 entryDate.addEventListener('change', renderHistory);
+document.querySelectorAll('.view-tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.view-tab').forEach(item => item.classList.toggle('is-active', item === tab));
+    document.querySelectorAll('.view-panel').forEach(panel => panel.classList.toggle('is-visible', panel.id === tab.dataset.view));
+    if (tab.dataset.view === 'historyView') loadCloudTransactions();
+  });
+});
 historyList.addEventListener('click', event => {
   const button = event.target.closest('[data-delete]');
   if (!button) return;
